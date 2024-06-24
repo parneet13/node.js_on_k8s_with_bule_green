@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-app-blue
+spec:
+  replicas: 1   # Adjust based on your scaling needs
+  selector:
+    matchLabels:
+      app: nextjs-app   # Selector label matching the Service
+      environment: blue
+  template:
+    metadata:
+      labels:
+        app: nextjs-app
+        environment: blue   # Environment-specific label
+    spec:
+      containers:
+        - name: nextjs-app
+          image: parneet13/node-app:blue
+          ports:
+            - containerPort: 3000   # Adjust based on your application's port
+
+
+

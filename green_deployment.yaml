@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-app-green
+spec:
+  replicas: 1   # Adjust based on your scaling needs
+  selector:
+    matchLabels:
+      app: nextjs-app   # Selector label matching the Service
+      environment: green
+  template:
+    metadata:
+      labels:
+        app: nextjs-app
+        environment: green   # Environment-specific label
+    spec:
+      containers:
+        - name: nextjs-app
+          image:  parneet13/node-app:green
+          ports:
+            - containerPort: 3000   # Adjust based on your application's port
+
+
